@@ -295,6 +295,22 @@ function attachToggleListener() {
       saveBtn.addEventListener("click", function() {
         saveUpdatedData();
       });
+      // app.ts
+
+// Get the form and input elements
+const resumeForm = document.getElementById('resumeForm') as HTMLFormElement;
+const usernameInput = document.getElementById('username') as HTMLInputElement;
+
+resumeForm.addEventListener('submit', function(event) {
+    event.preventDefault();  // Prevent the form from submitting the traditional way
+
+    const username = usernameInput.value.trim();
+    if (username) {
+        // Redirect to a new URL with the username as a query parameter
+        window.location.href = `/resume.html?username=${encodeURIComponent(username)}`;
+    }
+});
+
       
     });
   });

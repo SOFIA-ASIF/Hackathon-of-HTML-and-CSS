@@ -178,6 +178,18 @@ document.addEventListener("DOMContentLoaded", function () {
         saveBtn.addEventListener("click", function () {
             saveUpdatedData();
         });
+        // app.ts
+        // Get the form and input elements
+        var resumeForm = document.getElementById('resumeForm');
+        var usernameInput = document.getElementById('username');
+        resumeForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            var username = usernameInput.value.trim();
+            if (username) {
+                // Redirect to a new URL with the username as a query parameter
+                window.location.href = "/resume.html?username=".concat(encodeURIComponent(username));
+            }
+        });
     });
 });
 // edit button
