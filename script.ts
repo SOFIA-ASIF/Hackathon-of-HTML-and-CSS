@@ -75,7 +75,7 @@ function attachToggleListener() {
     const profilePicPreview = document.getElementById(
       "profile-pic-preview"
     ) as HTMLImageElement;
-    profilePicPreview.src = "/default-profile.jpg";
+    profilePicPreview.src = "default-profile.jpg";
   
     function cleanInput(input: string): string[] {
       return input
@@ -85,18 +85,14 @@ function attachToggleListener() {
     }
   
     function generateResume(data: ResumeData) {
-      const defaultProfilePic = "/default-profile.jpg"; // Update with your actual path
+      form.style.display = 'none';
   
       let outputHTML = `
       <div class="container">
         <!-- Personal Information Section -->
         <section class="personal-info">
       <div class="image">
-          ${profilePicPreview ? 
-            `<img class="profile-pic" src="${profilePicPreview.src}" alt="Profile Picture"/>` 
-            : 
-            `<img class="profile-pic" src="${defaultProfilePic}" alt="Default Profile Picture"/>`
-          }
+          <img class="profile-pic" src="${profilePicPreview.src}" alt="Profile Picture"/>
       </div>
       
       <h1 class="name">${data.name}</h1>
@@ -111,7 +107,7 @@ function attachToggleListener() {
       // Conditionally add Skills section
       if (true) {
         outputHTML += `
-          <button class="toggle-button" id="toggle-skills">Toggle Skills</button>
+          <button class="toggle-butto" id="toggle-skills">Toggle Skills</button>
           <div class="div-container" id="skills-section">
             <h2 class="skills" id="skills-heading">Skills</h2>
             <ul class="skill-name" id="skills">
@@ -123,7 +119,7 @@ function attachToggleListener() {
       // Conditionally add Languages section
       if (data.languages.length >= 1) {
         outputHTML += `
-          <button class="toggle-button" id="toggle-languages">Toggle Languages</button>
+          <button class="toggle-butto" id="toggle-languages">Toggle Languages</button>
           <div class="div-container" id="languages-section">
             <h2 class="skills" id="languages-heading">Languages</h2>
             <ul class="skill-name" id="languages">
@@ -137,13 +133,13 @@ function attachToggleListener() {
       if (data.hobbies.length >= 1) {
         outputHTML += `
   
-  <button class="toggle-button" id="toggle-hobbies">Toggle Hobbies</button>
-  <div class="div-container" id="hobbies-section">
-      <h2 class="skills" id="hobbies-heading">Hobbies</h2>
-      <ul class="skill-name" id="hobbies">
-          ${data.hobbies.map((hobby) => `<li>${hobby}</li>`).join("")}
-      </ul>
-  </div>`;
+        <button class="toggle-butto" id="toggle-hobbies">Toggle Hobbies</button>
+        <div class="div-container" id="hobbies-section">
+            <h2 class="skills" id="hobbies-heading">Hobbies</h2>
+            <ul class="skill-name" id="hobbies">
+                ${data.hobbies.map((hobby) => `<li>${hobby}</li>`).join("")}
+            </ul>
+        </div>`;
       }
   
       // Add work, summary, and education sections
@@ -185,9 +181,9 @@ function attachToggleListener() {
         </section>
       </div>`;
       editBtn.style.display = 'block';
+      saveBtn.style.display = 'block';
       // Set the output to the innerHTML
       output.innerHTML = outputHTML;
-  
       // Reattach the toggle button listeners
       attachToggleListener();
     }

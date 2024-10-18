@@ -62,7 +62,7 @@ body {
 .div-container::after {
   content: ""; /* Required to create the pseudo-element */
   display: block;
-  width: 240px; /* Set the width of the line */
+  width: 70%; /* Set the width of the line */
   height: 2px; /* Set the height (thickness) of the line */
   background-color: rgb(243, 235, 235); /* Line color */
   margin: 0 auto; /* Center the line */
@@ -185,6 +185,16 @@ button {
 button:hover {
   background-color: #ead8b1;
   color: #001f3f;
+}
+.toggle-butto{
+  background-color: #ead8b1;
+  color: #001f3f;
+  height: 23px;
+  padding: 5px;
+  align-items: center;
+}
+.toggle-butto:hover{
+  background-color: white;
 }
 @media (max-width: 768px) {
   .container {

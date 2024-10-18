@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Preview profile picture
     var profilePicInput = document.getElementById("profile-pic");
     var profilePicPreview = document.getElementById("profile-pic-preview");
-    profilePicPreview.src = "/default-profile.jpg";
+    profilePicPreview.src = "default-profile.jpg";
     function cleanInput(input) {
         return input
             .split(",")
@@ -63,23 +63,20 @@ document.addEventListener("DOMContentLoaded", function () {
             .filter(function (item) { return item !== ""; }); // Remove empty strings
     }
     function generateResume(data) {
-        var defaultProfilePic = "/default-profile.jpg"; // Update with your actual path
-        var outputHTML = "\n      <div class=\"container\">\n        <!-- Personal Information Section -->\n        <section class=\"personal-info\">\n      <div class=\"image\">\n          ".concat(profilePicPreview ?
-            "<img class=\"profile-pic\" src=\"".concat(profilePicPreview.src, "\" alt=\"Profile Picture\"/>")
-            :
-                "<img class=\"profile-pic\" src=\"".concat(defaultProfilePic, "\" alt=\"Default Profile Picture\"/>"), "\n      </div>\n      \n      <h1 class=\"name\">").concat(data.name, "</h1>\n      \n      <div class=\"details\">\n          <i class=\"fa-solid fa-phone icons\"><span>").concat(data.phone, "</span></i>\n          <i class=\"fa-regular fa-envelope icons\"><span>").concat(data.email, "</span></i>\n          <i class=\"fa-solid fa-location-dot icons\"><span>").concat(data.location, "</span></i>\n      </div>");
+        form.style.display = 'none';
+        var outputHTML = "\n      <div class=\"container\">\n        <!-- Personal Information Section -->\n        <section class=\"personal-info\">\n      <div class=\"image\">\n          <img class=\"profile-pic\" src=\"".concat(profilePicPreview.src, "\" alt=\"Profile Picture\"/>\n      </div>\n      \n      <h1 class=\"name\">").concat(data.name, "</h1>\n      \n      <div class=\"details\">\n          <i class=\"fa-solid fa-phone icons\"><span>").concat(data.phone, "</span></i>\n          <i class=\"fa-regular fa-envelope icons\"><span>").concat(data.email, "</span></i>\n          <i class=\"fa-solid fa-location-dot icons\"><span>").concat(data.location, "</span></i>\n      </div>");
         // Conditionally add Skills section
         if (true) {
-            outputHTML += "\n          <button class=\"toggle-button\" id=\"toggle-skills\">Toggle Skills</button>\n          <div class=\"div-container\" id=\"skills-section\">\n            <h2 class=\"skills\" id=\"skills-heading\">Skills</h2>\n            <ul class=\"skill-name\" id=\"skills\">\n              ".concat(data.skills.map(function (skill) { return "<li>".concat(skill, "</li>"); }).join(""), "\n            </ul>\n          </div>");
+            outputHTML += "\n          <button class=\"toggle-butto\" id=\"toggle-skills\">Toggle Skills</button>\n          <div class=\"div-container\" id=\"skills-section\">\n            <h2 class=\"skills\" id=\"skills-heading\">Skills</h2>\n            <ul class=\"skill-name\" id=\"skills\">\n              ".concat(data.skills.map(function (skill) { return "<li>".concat(skill, "</li>"); }).join(""), "\n            </ul>\n          </div>");
         }
         // Conditionally add Languages section
         if (data.languages.length >= 1) {
-            outputHTML += "\n          <button class=\"toggle-button\" id=\"toggle-languages\">Toggle Languages</button>\n          <div class=\"div-container\" id=\"languages-section\">\n            <h2 class=\"skills\" id=\"languages-heading\">Languages</h2>\n            <ul class=\"skill-name\" id=\"languages\">\n              ".concat(data.languages.map(function (language) { return "<li>".concat(language, "</li>"); }).join(""), "\n            </ul>\n          </div>");
+            outputHTML += "\n          <button class=\"toggle-butto\" id=\"toggle-languages\">Toggle Languages</button>\n          <div class=\"div-container\" id=\"languages-section\">\n            <h2 class=\"skills\" id=\"languages-heading\">Languages</h2>\n            <ul class=\"skill-name\" id=\"languages\">\n              ".concat(data.languages.map(function (language) { return "<li>".concat(language, "</li>"); }).join(""), "\n            </ul>\n          </div>");
         }
         // Conditionally add Hobbies section
         // Conditionally add Hobbies section
         if (data.hobbies.length >= 1) {
-            outputHTML += "\n  \n  <button class=\"toggle-button\" id=\"toggle-hobbies\">Toggle Hobbies</button>\n  <div class=\"div-container\" id=\"hobbies-section\">\n      <h2 class=\"skills\" id=\"hobbies-heading\">Hobbies</h2>\n      <ul class=\"skill-name\" id=\"hobbies\">\n          ".concat(data.hobbies.map(function (hobby) { return "<li>".concat(hobby, "</li>"); }).join(""), "\n      </ul>\n  </div>");
+            outputHTML += "\n  \n        <button class=\"toggle-butto\" id=\"toggle-hobbies\">Toggle Hobbies</button>\n        <div class=\"div-container\" id=\"hobbies-section\">\n            <h2 class=\"skills\" id=\"hobbies-heading\">Hobbies</h2>\n            <ul class=\"skill-name\" id=\"hobbies\">\n                ".concat(data.hobbies.map(function (hobby) { return "<li>".concat(hobby, "</li>"); }).join(""), "\n            </ul>\n        </div>");
         }
         // Add work, summary, and education sections
         outputHTML += "\n        </section>\n  \n        <!-- Experience Section -->\n        <section class=\"work\">\n           \n          <button class=\"toggle-button\" id=\"toggle-summary\">Toggle Summary</button>\n          <div class=\"summary\" id=\"summary-section\">\n            <h2 class=\"skills\" id=\"summary-heading\">SUMMARY</h2>\n            <div id=\"summary\">\n              <p>".concat(data.summary, "</p>\n            </div>\n          </div>\n  \n          ").concat(data.experience
@@ -87,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
             : "");
         outputHTML += "\n          <button class=\"toggle-button\" id=\"toggle-education\">Toggle Education</button>\n          <div class=\"summary\" id=\"education-section\">\n            <h2 class=\"skills\" id=\"education-heading\">EDUCATION</h2>\n            <div id=\"education\">\n              <p>".concat(data.education, "</p>\n            </div>\n          </div>\n        </section>\n      </div>");
         editBtn.style.display = 'block';
+        saveBtn.style.display = 'block';
         // Set the output to the innerHTML
         output.innerHTML = outputHTML;
         // Reattach the toggle button listeners
